@@ -33,7 +33,7 @@ void setup ()
         //    2) the battery on the device is low or even missing
 
         Serial.println("RTC lost confidence in the DateTime!");
-        Rtc.SetDateTime(compiled);
+        //Rtc.SetDateTime(compiled);
     }
 
     if (Rtc.GetIsWriteProtected())
@@ -52,7 +52,7 @@ void setup ()
     if (now < compiled) 
     {
         Serial.println("RTC is older than compile time!  (Updating DateTime)");
-        Rtc.SetDateTime(compiled);
+        //Rtc.SetDateTime(compiled);
     }
     else if (now > compiled) 
     {
@@ -64,7 +64,7 @@ void setup ()
     }
 }
 
-void loop () 
+void loop ()
 {
     RtcDateTime now = Rtc.GetDateTime();
 
