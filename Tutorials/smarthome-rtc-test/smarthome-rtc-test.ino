@@ -9,6 +9,8 @@
 #define RTC_CLK D5 //
 #define RTC_CE  D0 //
 
+#define SET_DATE_TIME true // set this to "true" when you want to update time and date
+
 ThreeWire myWire(D7,D5,D0); // IO, SCLK, CE
 RtcDS1302<ThreeWire> Rtc(myWire);
 
@@ -25,43 +27,7 @@ void setup ()
     RtcDateTime compiled = RtcDateTime(__DATE__, __TIME__);
     printDateTime(compiled);
     Serial.println();
-
-    if (!Rtc.IsDateTimeValid()) 
-    {
-        // Common Causes:
-        //    1) first time you ran and the device wasn't running yet
-        //    2) the battery on the device is low or even missing
-
-        Serial.println("RTC lost confidence in the DateTime!");
-        //Rtc.SetDateTime(compiled);
-    }
-
-    if (Rtc.GetIsWriteProtected())
-    {
-        Serial.println("RTC was write protected, enabling writing now");
-        Rtc.SetIsWriteProtected(false);
-    }
-
-    if (!Rtc.GetIsRunning())
-    {
-        Serial.println("RTC was not actively running, starting now");
-        Rtc.SetIsRunning(true);
-    }
-
-    RtcDateTime now = Rtc.GetDateTime();
-    if (now < compiled) 
-    {
-        Serial.println("RTC is older than compile time!  (Updating DateTime)");
-        //Rtc.SetDateTime(compiled);
-    }
-    else if (now > compiled) 
-    {
-        Serial.println("RTC is newer than compile time. (this is expected)");
-    }
-    else if (now == compiled) 
-    {
-        Serial.println("RTC is the same as compile time! (not expected but all is fine)");
-    }
+    if(SET_DATE_TIME) Rtc.SetDateTime(compiled);  // Set time and date from compiled value
 }
 
 void loop ()
