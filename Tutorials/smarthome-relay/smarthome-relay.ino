@@ -1,29 +1,34 @@
+#define OUTPUT1 D1
+#define OUTPUT2 D2
+#define OUTPUT3 D8
+#define OUTPUT4 D6
+
 void setup() {
   Serial.begin(115200);
-  pinMode(D1, OUTPUT);
-  pinMode(D2, OUTPUT);
-  pinMode(D8, OUTPUT);
-  pinMode(D6, OUTPUT);
+  pinMode(OUTPUT1, OUTPUT);
+  pinMode(OUTPUT2, OUTPUT);
+  pinMode(OUTPUT3, OUTPUT);
+  pinMode(OUTPUT4, OUTPUT);
 }
 
 void loop() {
-  digitalWrite(D1, 1);
+  digitalWrite(OUTPUT1, 1);
   delay(1000);
-  digitalWrite(D1, 0);
+  digitalWrite(OUTPUT1, 0);
   delay(500);
 
-  digitalWrite(D2, 1);
+  digitalWrite(OUTPUT2, 1);
   delay(1000);
-  digitalWrite(D2, 0);
+  digitalWrite(OUTPUT2, 0);
   delay(500);
 
-  digitalWrite(D8, 1);
+  digitalWrite(OUTPUT3, 1);
   delay(1000);
-  digitalWrite(D8, 0);
+  digitalWrite(OUTPUT3, 0);
   delay(500);
 
-  digitalWrite(D6, 1);
+  digitalWrite(OUTPUT4, 1);
   delay(1000);
-  digitalWrite(D6, 0);
+  digitalWrite(OUTPUT4, 0);
   delay(500);
 }

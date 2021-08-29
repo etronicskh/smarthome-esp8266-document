@@ -9,7 +9,7 @@
 #define RTC_CLK D5 //
 #define RTC_CE  D0 //
 
-#define SET_DATE_TIME true // set this to "true" when you want to update time and date
+#define SET_DATE_TIME 0 // set this to "true" when you want to update time and date
 
 ThreeWire myWire(D7,D5,D0); // IO, SCLK, CE
 RtcDS1302<ThreeWire> Rtc(myWire);
